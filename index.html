@@ -9,10 +9,10 @@
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+  <!-- Favicons
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  -->
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -345,9 +345,9 @@
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
+              <li data-filter=".filter-app">Singer</li>
+              <li data-filter=".filter-card">Merritt</li>
+              <li data-filter=".filter-web">Juki</li>
             </ul>
           </div>
         </div>
@@ -667,21 +667,26 @@
                 <div class="info-box" data-aos="fade-up">
                   <i class="bx bx-map"></i>
                   <h3>Our Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <p>
+                     NO 4, SANRUTH TOWERS,
+                          NEAR BUS STAND
+                          GOBICHETTIPALAYAM, Tamil Nadu
+                          India 638476
+                  </p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                   <i class="bx bx-envelope"></i>
                   <h3>Email Us</h3>
-                  <p>info@example.com<br>contact@example.com</p>
+                  <p>sanruthmachines@gmail.com</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
                   <i class="bx bx-phone-call"></i>
                   <h3>Call Us</h3>
-                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                  <p>+919965561326</p>
                 </div>
               </div>
             </div>
@@ -701,7 +706,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Contact Number" data-rule="minlen:5" data-msg="Please enter 10 digits of mobile number" />
                 <div class="validate"></div>
               </div>
               <div class="form-group">
@@ -734,17 +739,17 @@
         <div class="row  justify-content-center">
           <div class="col-lg-6">
             <h3>SanRuth Machines</h3>
-            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+            <p>We are the leading trader of Sewing Machine, Embroidery Machine, Stitch Machine and many more. Further we also service provider of Sewing Machine Maintenance Service, Embroidery Machine Installation Service and more.</p>
           </div>
         </div>
 
-        <div class="row footer-newsletter justify-content-center">
+        <!--<div class="row footer-newsletter justify-content-center">
           <div class="col-lg-6">
             <form action="" method="post">
               <input type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
             </form>
           </div>
-        </div>
+        </div>-->
 
         <div class="social-links">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -766,7 +771,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        SM
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -784,7 +789,22 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script>
+  $(document).ready(function(){
+    $("button").click(function(){
+      $.post("https://sanruth-machines.herokuapp.com/api/products/enquiry",
+      {
+        name: "sunder",
+        phone: "88899999",
+        email: "sunder@gmail.com"
+      },
+      function(data,status){
+        alert("Data: " + data + "\nStatus: " + status);
+      });
+    });
+  });
+  </script>
+  
 </body>
 
 </html>
