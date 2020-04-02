@@ -547,8 +547,8 @@ section {
 }
 
 .about .image {
-  background: url("../img/about.jpg") center center no-repeat;
-  background-size: cover;
+  background: url("../img/banner.jpg") center center no-repeat;
+  background-size: contain;
   min-height: 400px;
 }
 
