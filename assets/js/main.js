@@ -1,9 +1,3 @@
-/**
-* Template Name: Bocor - v2.0.0
-* Template URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 !(function($) {
   "use strict";
 
@@ -88,30 +82,59 @@
 
   // Porfolio isotope and filter
   $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
-
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-    });
 
     // Initiate venobox (lightbox feature used in portofilo)
     $(document).ready(function() {
       $('.venobox').venobox();
+	  
+	  $.ajax({url: "http://localhost:8080/api/productsWithImages", async: true, success: function(result){
+			result.forEach(function(item, i, arr){
+				$("#portfolio-flters").append(`<li  data-filter=".filter-${item.table_id}">${item.name}</li>`);
+				
+				$("#productDescription").append(`<div class="col-md-7 pt-4 productDesc desc-filter-${item.table_id}" data-aos="fade-left">
+					<h3>${item.name}</h3>
+					<ul ID = "productSpec-${item.table_id}">
+					</ul>
+        </div>`);
+
+        let specList = item.specification.split('\n');
+
+        specList.forEach(function(name){
+          $("#productSpec-" + item.table_id).append(`<li><i class="icofont-check"></i>${name}</li>`);
+        });
+        			
+				item.imageData.forEach(function(item2, i2, arr2){
+					$("#productImages").append(`<div class="col-lg-4 col-md-6 portfolio-item filter-${item.table_id}">
+													  <img src="${item2}" class="img-fluid" alt="">
+												  </div>`);
+				});
+				});
+			      var portfolioIsotope = $('.portfolio-container').isotope({
+                  itemSelector: '.portfolio-item',
+                  layoutMode: 'fitRows',
+                  filter:'filter-3'
+                });
+
+			      $('#portfolio-flters li').on('click', function(event) {
+              $(".productDesc").hide();
+              $("#portfolio-flters li").removeClass('filter-active');
+              $(this).addClass('filter-active');
+              let _className = event.currentTarget.dataset.filter.replace(/\./g, "");
+              $(".desc-"+_className).show();
+              
+              portfolioIsotope.isotope({
+                filter: $(this).data('filter')
+              });
+					});
+		}
+    });
     });
   });
 
-  // Initi AOS
-  AOS.init({
-    duration: 800,
-    easing: "ease-in-out"
-  });
+   // Initi AOS
+   AOS.init({
+     duration: 800,
+     easing: "ease-in-out"
+   });
 
 })(jQuery);
